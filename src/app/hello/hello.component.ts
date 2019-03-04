@@ -28,7 +28,11 @@ export class HelloComponent implements OnInit {
   }
 
   deposit() {
-    this.bankAccountService.deposit(this.bankAccountId, this.amountToProcess);
+    try {
+      this.bankAccountService.deposit(this.bankAccountId, this.amountToProcess);
+    } catch (e) {
+      alert(e);
+    }
   }
 
   withdraw() {
