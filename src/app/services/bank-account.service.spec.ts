@@ -46,4 +46,11 @@ describe('BankAccountService', () => {
     expect(returnedAccount.id).toEqual('BE1');
     expect(returnedAccount.balance).toEqual(20);
   });
+
+  it('should return a copy for the array of accounts', () => {
+    const service: BankAccountService = TestBed.get(BankAccountService);
+    const account = service.deposit('BE1', 100);
+    service.getAccounts()[0].balance = 0;
+    expect(service.getAccount('BE1').balance).toEqual(100);
+  });
 });

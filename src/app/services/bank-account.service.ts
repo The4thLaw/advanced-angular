@@ -10,9 +10,16 @@ export class BankAccountService {
 
   constructor() { }
 
-  // TODO: don't return direct object references?
+  private clone<T>(input: T): T {
+    return JSON.parse(JSON.stringify(input));
+  }
+
+  getAccount(id): Account {
+    return this.clone(this.accounts.get(id));
+  }
+
   getAccounts(): Account[] {
-    return Array.from(this.accounts.values());
+    return this.clone(Array.from(this.accounts.values()));
   }
 
   /**
@@ -33,7 +40,7 @@ export class BankAccountService {
       this.accounts.set(accountId, theAccount);
     }
     theAccount.balance += amount;
-    return theAccount;
+    return this.clone(theAccount);
   }
 
   withdraw(accountId: string, amount: number): Account {
@@ -48,6 +55,6 @@ export class BankAccountService {
       throw new Error('Inufficient funds for account ' + accountId);
     }
     theAccount.balance -= amount;
-    return theAccount;
+    return this.clone(theAccount);
   }
 }
