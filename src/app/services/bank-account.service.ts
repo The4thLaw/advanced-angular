@@ -5,7 +5,7 @@ import { Account } from '../models/account';
   providedIn: 'root'
 })
 export class BankAccountService {
-  private accounts = {};
+  private accounts: Map<string, Account> = new Map();
 
   constructor() { }
 
@@ -13,14 +13,14 @@ export class BankAccountService {
     if (amount <= 0) {
       throw new Error('Can only deposit positive amounts');
     }
-    if (!this.accounts[accountId]) {
+    if (!this.accounts.get(accountId)) {
       const newAccount = new Account();
       newAccount.id = accountId;
       newAccount.balance = 0;
-      this.accounts[accountId] = newAccount;
+      this.accounts.set(accountId, newAccount);
     }
-    const theAccount = this.accounts[accountId];
-    this.accounts[accountId].balance += amount;
+    const theAccount = this.accounts.get(accountId);
+    theAccount.balance += amount;
     return theAccount;
   }
 
@@ -28,10 +28,10 @@ export class BankAccountService {
     if (amount <= 0) {
       throw new Error('Can only withdraw positive amounts');
     }
-    if (!this.accounts[accountId]) {
+    if (!this.accounts.get(accountId)) {
       throw new Error('No such account: ' + accountId);
     }
-    const theAccount = this.accounts[accountId];
+    const theAccount = this.accounts.get(accountId);
     if (theAccount.balance <= amount) {
       throw new Error('Inufficient funds for account ' + accountId);
     }
