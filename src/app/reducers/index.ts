@@ -8,10 +8,10 @@ import {
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
 import { accountReducer } from './accounts.reducers';
-import { Account } from '../models/account';
+import { Accounts } from '../models/accounts';
 
 export interface State {
-  accounts: Account[];
+  accounts: Accounts;
   // loggedIn: boolean;
 }
 

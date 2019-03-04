@@ -3,14 +3,14 @@ import { Account } from '../models/account';
 import { State } from '../reducers';
 import { Store, select } from '@ngrx/store';
 import { DepositAction, WithdrawAction } from '../reducers/accounts.actions';
+import { Accounts } from '../models/accounts';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BankAccountService {
   /** The accounts, indexed by account ID. */
-  //private accounts: Map<string, Account> = new Map();
-  private accounts: Account[];
+  private accounts: Accounts;
 
   constructor(private store: Store<State>) {
     // NOTE: OnInit doesn't work on services
@@ -22,13 +22,11 @@ export class BankAccountService {
 
 
   getAccount(id): Account {
-    //return this.accounts.get(id);
-    return null;
+    return this.accounts.accountMap.get(id);
   }
 
   getAccounts(): Account[] {
-    //return Array.from(this.accounts.values());
-    return this.accounts;
+    return Array.from(this.accounts.accountMap.values());
   }
 
   /**

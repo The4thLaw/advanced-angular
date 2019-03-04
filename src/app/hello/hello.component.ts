@@ -9,8 +9,9 @@ import { Account } from '../models/account';
 })
 export class HelloComponent {
 
-  bankAccountId: string;
-  amountToProcess: number;
+  // TODO: figure out why this doesn't work without initialization
+  bankAccountId: string = '';
+  amountToProcess: number = null;
 
   constructor(private bankAccountService: BankAccountService) { }
 

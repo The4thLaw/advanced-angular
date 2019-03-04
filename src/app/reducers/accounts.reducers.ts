@@ -1,31 +1,30 @@
-import { Action, State } from '@ngrx/store';
 import { AccountAction, AccountActionType } from './accounts.actions';
 import { Account } from '../models/account';
+import { Accounts } from '../models/accounts';
 
 // Always provide a default state to bootstrap the application
-const defaultAccountList = [];
+const defaultAccountList = new Accounts();
 
-export function accountReducer(accounts: Account[] = defaultAccountList, action: AccountAction): Account[] {
+export function accountReducer(accounts: Accounts = defaultAccountList, action: AccountAction): Accounts {
     // TODO: manage negative amounts
 
-    let newState: Account[];
+    let newState: Accounts;
     let theAccount: Account;
 
-    // TODO: find a way to work with Map because this is O(n) :(
     switch (action.type) {
         case AccountActionType.deposit:
             // We need a deep copy to return a new state, since the state is immutable
-            newState = [...accounts];
-            theAccount = newState.find(account => account.id === action.accountId);
+            newState = accounts.clone();
+            theAccount = newState.accountMap.get(action.accountId);
             if (!theAccount) {
                 theAccount = new Account(action.accountId);
-                newState.push(theAccount);
+                newState.accountMap.set(action.accountId, theAccount);
             }
             theAccount.balance += action.amount;
             return newState;
-        /*case AccountActionType.withdraw:
-            newState = [...accounts];
-            theAccount = accounts.get(action.accountId);
+        case AccountActionType.withdraw:
+            newState = accounts.clone();
+            theAccount = newState.accountMap.get(action.accountId);
             if (!theAccount) {
                 // TODO: manage the error
                 console.warn('No such account: ' + action.accountId);
@@ -33,7 +32,7 @@ export function accountReducer(accounts: Account[] = defaultAccountList, action:
             }
             // TODO: manage insufficient funds
             theAccount.balance -= action.amount;
-            return newState;*/
+            return newState;
         default:
             console.warn('Unknown action type: ' + action.type);
             return accounts;

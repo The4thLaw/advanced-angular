@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 export class AppEffects {
   constructor(private actions$: Actions) {}
 
-  @Effect()
+  /*@Effect()
   foo$ = this.actions$.pipe(
     // Only process deposits
     ofType(AccountActionType.deposit),
@@ -19,5 +19,5 @@ export class AppEffects {
       }
       return { type: 'DepositConfirm', amount: action.amount, accountId: action.accountId};
     })
-  );
+  );*/
 }
