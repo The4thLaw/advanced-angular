@@ -31,7 +31,7 @@ export class HelloComponent implements OnInit {
     try {
       this.bankAccountService.deposit(this.bankAccountId, this.amountToProcess);
     } catch (e) {
-      alert(e);
+      alert(e.message);
     }
   }
 
@@ -39,7 +39,7 @@ export class HelloComponent implements OnInit {
     try {
       this.bankAccountService.withdraw(this.bankAccountId, this.amountToProcess);
     } catch (e) {
-      alert(e);
+      alert(e.message);
     }
   }
 }
