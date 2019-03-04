@@ -22,11 +22,11 @@ export class BankAccountService {
 
 
   getAccount(id): Account {
-    return this.accounts.accountMap.get(id);
+    return this.accounts.getAccount(id);
   }
 
   getAccounts(): Account[] {
-    return Array.from(this.accounts.accountMap.values());
+    return this.accounts.asArray();
   }
 
   /**

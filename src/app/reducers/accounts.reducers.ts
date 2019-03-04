@@ -15,16 +15,16 @@ export function accountReducer(accounts: Accounts = defaultAccountList, action: 
         case AccountActionType.deposit:
             // We need a deep copy to return a new state, since the state is immutable
             newState = accounts.clone();
-            theAccount = newState.accountMap.get(action.accountId);
+            theAccount = newState.getAccount(action.accountId);
             if (!theAccount) {
                 theAccount = new Account(action.accountId);
-                newState.accountMap.set(action.accountId, theAccount);
+                newState.addAccount(action.accountId, theAccount);
             }
             theAccount.balance += action.amount;
             return newState;
         case AccountActionType.withdraw:
             newState = accounts.clone();
-            theAccount = newState.accountMap.get(action.accountId);
+            theAccount = newState.getAccount(action.accountId);
             if (!theAccount) {
                 // TODO: manage the error
                 console.warn('No such account: ' + action.accountId);

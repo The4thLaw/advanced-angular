@@ -13,4 +13,16 @@ export class Accounts {
         clone.accountMap = clonedMap;
         return clone;
     }
+
+    asArray(): Account[] {
+        return Array.from(this.accountMap.values());
+    }
+
+    addAccount(accountId: string, account: Account) {
+        return this.accountMap.set(accountId, account);
+    }
+
+    getAccount(accountId: string) {
+        return this.accountMap.get(accountId);
+    }
 }
