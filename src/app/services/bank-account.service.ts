@@ -41,7 +41,6 @@ export class BankAccountService {
     if (amount <= 0) {
       throw new Error('Can only deposit positive amounts');
     }
-    console.log('Depositing');
     this.store.dispatch(new DepositAction(accountId, amount));
     return this.getAccount(accountId);
   }
