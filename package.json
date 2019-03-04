@@ -11,7 +11,8 @@
     "app:setup": "npm i",
     "app:serve": "ng serve",
     "app:build": "ng build --prod",
-    "app:server": "node_modules/.bin/json-server server/db.json"
+    "app:server": "node_modules/.bin/json-server server/db.json",
+    "cypress": "node_modules/.bin/cypress open"
   },
   "private": true,
   "dependencies": {
