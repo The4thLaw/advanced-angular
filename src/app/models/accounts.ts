@@ -1,28 +1,31 @@
 import { Account } from './account';
 
 export class Accounts {
-    accountMap: Map<string, Account> = new Map();
+    accountMap = {};
+
 
     clone(): Accounts {
-        const clonedMap: Map<string, Account> = new Map();
-        this.accountMap.forEach((value, key) => {
-            clonedMap.set(key, value.clone());
-        });
-
         const clone = new Accounts();
+
+        const clonedMap = {};
+        for (const accountId of Object.keys(this.accountMap)) {
+            clonedMap[accountId] = this.accountMap[accountId].clone();
+        }
+
         clone.accountMap = clonedMap;
+
         return clone;
     }
 
     asArray(): Account[] {
-        return Array.from(this.accountMap.values());
+        return Object.values(this.accountMap);
     }
 
     addAccount(accountId: string, account: Account) {
-        return this.accountMap.set(accountId, account);
+        this.accountMap[accountId] = account;
     }
 
     getAccount(accountId: string) {
-        return this.accountMap.get(accountId);
+        return this.accountMap[accountId];
     }
 }
