@@ -23,11 +23,19 @@ export class HelloComponent implements OnInit {
     return this.bankAccountService.getAccounts();
   }
 
+  select(id: string) {
+    this.bankAccountId = id;
+  }
+
   deposit() {
     this.bankAccountService.deposit(this.bankAccountId, this.amountToProcess);
   }
 
   withdraw() {
-    this.bankAccountService.withdraw(this.bankAccountId, this.amountToProcess);
+    try {
+      this.bankAccountService.withdraw(this.bankAccountId, this.amountToProcess);
+    } catch (e) {
+      alert(e);
+    }
   }
 }
