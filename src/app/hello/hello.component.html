@@ -6,4 +6,18 @@
       </p>
     </div>
   </div>
+  <div class="row">
+    <ul>
+      <li *ngFor="let account of accounts">
+        {{account.id}}: {{account.balance}}€
+      </li>
+    </ul>
+  </div>
+  <h1>Deposit / Withdraw</h1>
+  <div>
+    Account: <input [(ngModel)]="bankAccountId" />
+    Amount: <input type="number" [(ngModel)]="amountToProcess" />
+    <button (click)="deposit()">Deposit</button>
+    <button (click)="withdraw()">Withdraw</button>
+  </div>
 </div>

@@ -10,6 +10,11 @@ export class BankAccountService {
 
   constructor() { }
 
+  // TODO: don't return direct object references?
+  getAccounts(): Account[] {
+    return Array.from(this.accounts.values());
+  }
+
   /**
    * Deposits an amount on a bank account.
    * @param accountId The account ID.
@@ -39,7 +44,7 @@ export class BankAccountService {
     if (!theAccount) {
       throw new Error('No such account: ' + accountId);
     }
-    if (theAccount.balance <= amount) {
+    if (theAccount.balance < amount) {
       throw new Error('Inufficient funds for account ' + accountId);
     }
     theAccount.balance -= amount;
