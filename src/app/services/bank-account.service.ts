@@ -13,13 +13,13 @@ export class BankAccountService {
     if (amount <= 0) {
       throw new Error('Can only deposit positive amounts');
     }
-    if (!this.accounts.get(accountId)) {
-      const newAccount = new Account();
-      newAccount.id = accountId;
-      newAccount.balance = 0;
-      this.accounts.set(accountId, newAccount);
+    let theAccount = this.accounts.get(accountId);
+    if (!theAccount) {
+      theAccount = new Account();
+      theAccount.id = accountId;
+      theAccount.balance = 0;
+      this.accounts.set(accountId, theAccount);
     }
-    const theAccount = this.accounts.get(accountId);
     theAccount.balance += amount;
     return theAccount;
   }
@@ -28,10 +28,10 @@ export class BankAccountService {
     if (amount <= 0) {
       throw new Error('Can only withdraw positive amounts');
     }
-    if (!this.accounts.get(accountId)) {
+    const theAccount = this.accounts.get(accountId);
+    if (!theAccount) {
       throw new Error('No such account: ' + accountId);
     }
-    const theAccount = this.accounts.get(accountId);
     if (theAccount.balance <= amount) {
       throw new Error('Inufficient funds for account ' + accountId);
     }
