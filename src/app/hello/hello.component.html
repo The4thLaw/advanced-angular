@@ -12,7 +12,7 @@
       <tbody>
         <tr *ngFor="let account of accounts">
           <td>{{account.id}}</td>
-          <td>{{account.balance}}</td>
+          <td>{{account.balance}} €</td>
           <td><button class="btn btn-primary btn-sm" (click)="select(account.id)" i18n>Select</button></td>
         </tr>
       </tbody>
@@ -26,7 +26,15 @@
         <input id="bankAccountId" class="form-control" [(ngModel)]="bankAccountId" />
 
         <label for="amountToProcess" i18n>Amount</label>
-        <input id="amountToProcess" class="form-control" type="number" [(ngModel)]="amountToProcess" />
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+          </div>
+          <input id="amountToProcess" class="form-control" type="number" [(ngModel)]="amountToProcess" />
+          <div class="input-group-append">
+            <span class="input-group-text">.00</span>
+          </div>
+        </div>
       </div>
       <div class="btn-toolbar">
         <button class="btn btn-primary mr-3" (click)="deposit()" i18n>Deposit</button>
