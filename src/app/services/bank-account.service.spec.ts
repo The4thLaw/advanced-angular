@@ -15,7 +15,7 @@ describe('BankAccountService', () => {
     const returnedAccount = service.deposit('BE1', 100);
     expect(returnedAccount).toBeTruthy();
     expect(returnedAccount.id).toEqual('BE1');
-    expect(returnedAccount.amount).toEqual(100);
+    expect(returnedAccount.balance).toEqual(100);
   });
 
   it('should not allow withdrawing from empty accounts', () => {
@@ -44,6 +44,6 @@ describe('BankAccountService', () => {
     service.deposit('BE1', 100);
     const returnedAccount = service.withdraw('BE1', 80);
     expect(returnedAccount.id).toEqual('BE1');
-    expect(returnedAccount.amount).toEqual(20);
+    expect(returnedAccount.balance).toEqual(20);
   });
 });
