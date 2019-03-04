@@ -5,10 +5,17 @@ import { Account } from '../models/account';
   providedIn: 'root'
 })
 export class BankAccountService {
+  /** The accounts, indexed by account ID. */
   private accounts: Map<string, Account> = new Map();
 
   constructor() { }
 
+  /**
+   * Deposits an amount on a bank account.
+   * @param accountId The account ID.
+   * @param amount The amount to deposit. Must be strictly positive.
+   * @return The account.
+   */
   deposit(accountId: string, amount: number): Account {
     if (amount <= 0) {
       throw new Error('Can only deposit positive amounts');
