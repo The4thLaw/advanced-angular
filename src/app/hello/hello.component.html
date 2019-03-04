@@ -13,7 +13,7 @@
         <tr *ngFor="let account of accounts">
           <td>{{account.id}}</td>
           <td>{{account.balance}}</td>
-          <td><button class="btn btn-primary btn-sm" (click)="select(account.id)">Select</button></td>
+          <td><button class="btn btn-primary btn-sm" (click)="select(account.id)" i18n>Select</button></td>
         </tr>
       </tbody>
     </table>
@@ -22,15 +22,15 @@
     <h2 i18n>Deposit / Withdraw</h2>
     <div>
       <div class="form-group">
-        <label for="bankAccountId">Account</label>
+        <label for="bankAccountId" i18n>Account</label>
         <input id="bankAccountId" class="form-control" [(ngModel)]="bankAccountId" />
 
-        <label for="amountToProcess">Amount</label>
+        <label for="amountToProcess" i18n>Amount</label>
         <input id="amountToProcess" class="form-control" type="number" [(ngModel)]="amountToProcess" />
       </div>
       <div class="btn-toolbar">
-        <button class="btn btn-primary mr-3" (click)="deposit()">Deposit</button>
-        <button class="btn btn-warning" (click)="withdraw()">Withdraw</button>
+        <button class="btn btn-primary mr-3" (click)="deposit()" i18n>Deposit</button>
+        <button class="btn btn-warning" (click)="withdraw()" i18n>Withdraw</button>
       </div>
     </div>
   </div>
