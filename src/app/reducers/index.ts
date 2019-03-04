@@ -11,7 +11,7 @@ import { accountReducer } from './accounts.reducers';
 import { Account } from '../models/account';
 
 export interface State {
-  accounts: Map<string, Account>;
+  accounts: Account[];
   // loggedIn: boolean;
 }
 

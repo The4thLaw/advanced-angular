@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BankAccountService } from '../services/bank-account.service';
 import { Account } from '../models/account';
 
@@ -7,17 +7,12 @@ import { Account } from '../models/account';
   templateUrl: './hello.component.html',
   styleUrls: ['./hello.component.css']
 })
-export class HelloComponent implements OnInit {
+export class HelloComponent {
 
   bankAccountId: string;
   amountToProcess: number;
 
   constructor(private bankAccountService: BankAccountService) { }
-
-  ngOnInit() {
-    // TODO: remove this:
-    this.bankAccountService.deposit('BE1', 100);
-  }
 
   get accounts(): Account[] {
     return this.bankAccountService.getAccounts();

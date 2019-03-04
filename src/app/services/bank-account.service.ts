@@ -7,25 +7,28 @@ import { DepositAction, WithdrawAction } from '../reducers/accounts.actions';
 @Injectable({
   providedIn: 'root'
 })
-export class BankAccountService implements OnInit {
+export class BankAccountService {
   /** The accounts, indexed by account ID. */
-  private accounts: Map<string, Account> = new Map();
+  //private accounts: Map<string, Account> = new Map();
+  private accounts: Account[];
 
-  constructor(private store: Store<State>) { }
-
-  ngOnInit() {
+  constructor(private store: Store<State>) {
+    // NOTE: OnInit doesn't work on services
     // A subscribe() would give access to the whole state. select(), provided by ngrx, allows keeping just what we need
     this.store.pipe(select('accounts')).subscribe(accounts => {
       this.accounts = accounts;
     });
-  }
+   }
+
 
   getAccount(id): Account {
-    return this.accounts.get(id);
+    //return this.accounts.get(id);
+    return null;
   }
 
   getAccounts(): Account[] {
-    return Array.from(this.accounts.values());
+    //return Array.from(this.accounts.values());
+    return this.accounts;
   }
 
   /**

@@ -1,5 +1,7 @@
 export class Account {
-    balance = 0;
+    constructor(public readonly id: string, public balance: number = 0) { }
 
-    constructor(public readonly id: string) { }
+    clone(): Account {
+        return new Account(this.id, this.balance);
+    }
 }
