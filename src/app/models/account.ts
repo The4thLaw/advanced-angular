@@ -1,4 +1,5 @@
 export class Account {
-    id: string;
-    balance: number;
+    balance = 0;
+
+    constructor(public readonly id: string) { }
 }

@@ -3,17 +3,21 @@ import {
   ActionReducerMap,
   createFeatureSelector,
   createSelector,
-  MetaReducer
+  MetaReducer,
+  Action
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
+import { accountReducer } from './accounts.reducers';
+import { Account } from '../models/account';
 
 export interface State {
-
+  accounts: Map<string, Account>;
+  // loggedIn: boolean;
 }
 
 export const reducers: ActionReducerMap<State> = {
-
+  accounts: accountReducer/*,
+  loggedIn: ...*/
 };
-
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];

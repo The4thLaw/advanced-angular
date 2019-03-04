@@ -1,25 +1,31 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Account } from '../models/account';
+import { State } from '../reducers';
+import { Store, select } from '@ngrx/store';
+import { DepositAction, WithdrawAction } from '../reducers/accounts.actions';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BankAccountService {
+export class BankAccountService implements OnInit {
   /** The accounts, indexed by account ID. */
   private accounts: Map<string, Account> = new Map();
 
-  constructor() { }
+  constructor(private store: Store<State>) { }
 
-  private clone<T>(input: T): T {
-    return JSON.parse(JSON.stringify(input));
+  ngOnInit() {
+    // A subscribe() would give access to the whole state. select(), provided by ngrx, allows keeping just what we need
+    this.store.pipe(select('accounts')).subscribe(accounts => {
+      this.accounts = accounts;
+    });
   }
 
   getAccount(id): Account {
-    return this.clone(this.accounts.get(id));
+    return this.accounts.get(id);
   }
 
   getAccounts(): Account[] {
-    return this.clone(Array.from(this.accounts.values()));
+    return Array.from(this.accounts.values());
   }
 
   /**
@@ -32,29 +38,16 @@ export class BankAccountService {
     if (amount <= 0) {
       throw new Error('Can only deposit positive amounts');
     }
-    let theAccount = this.accounts.get(accountId);
-    if (!theAccount) {
-      theAccount = new Account();
-      theAccount.id = accountId;
-      theAccount.balance = 0;
-      this.accounts.set(accountId, theAccount);
-    }
-    theAccount.balance += amount;
-    return this.clone(theAccount);
+    console.log('Depositing');
+    this.store.dispatch(new DepositAction(accountId, amount));
+    return this.getAccount(accountId);
   }
 
   withdraw(accountId: string, amount: number): Account {
     if (amount <= 0) {
       throw new Error('Can only withdraw positive amounts');
     }
-    const theAccount = this.accounts.get(accountId);
-    if (!theAccount) {
-      throw new Error('No such account: ' + accountId);
-    }
-    if (theAccount.balance < amount) {
-      throw new Error('Inufficient funds for account ' + accountId);
-    }
-    theAccount.balance -= amount;
-    return this.clone(theAccount);
+    this.store.dispatch(new WithdrawAction(accountId, amount));
+    return this.getAccount(accountId);
   }
 }
