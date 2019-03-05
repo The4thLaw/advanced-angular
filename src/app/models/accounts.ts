@@ -1,7 +1,7 @@
 import { Account } from './account';
 
 export class Accounts {
-    accountMap = {};
+    private accountMap = {};
 
 
     clone(): Accounts {
@@ -21,8 +21,8 @@ export class Accounts {
         return Object.values(this.accountMap);
     }
 
-    addAccount(accountId: string, account: Account) {
-        this.accountMap[accountId] = account;
+    addAccount(account: Account) {
+        this.accountMap[account.id] = account;
     }
 
     getAccount(accountId: string) {

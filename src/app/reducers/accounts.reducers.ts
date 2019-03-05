@@ -18,7 +18,7 @@ export function accountReducer(accounts: Accounts = defaultAccountList, action: 
             theAccount = newState.getAccount(action.accountId);
             if (!theAccount) {
                 theAccount = new Account(action.accountId);
-                newState.addAccount(action.accountId, theAccount);
+                newState.addAccount(theAccount);
             }
             theAccount.balance += action.amount;
             return newState;
