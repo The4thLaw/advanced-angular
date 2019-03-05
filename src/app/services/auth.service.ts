@@ -6,9 +6,10 @@ import { of, BehaviorSubject, Observable } from 'rxjs';
 })
 export class AuthService {
     private localStorageTokenKey = 'token';
+    private localStorageAvailable = typeof (localStorage) !== 'undefined' && localStorage;
 
     isUserLoggedin = new BehaviorSubject<boolean>(
-        localStorage
+        this.localStorageAvailable
             ?
             (localStorage.getItem(this.localStorageTokenKey) && localStorage.getItem(this.localStorageTokenKey).length > 0)
             :
@@ -23,7 +24,7 @@ export class AuthService {
     }
 
     logout() {
-        if (localStorage) {
+        if (this.localStorageAvailable) {
             localStorage.removeItem(this.localStorageTokenKey);
         }
         this.isUserLoggedin.next(false);
