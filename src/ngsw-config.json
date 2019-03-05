@@ -24,5 +24,19 @@
                 ]
             }
         }
+    ],
+    "dataGroups": [
+        {
+            "name": "news-and-authors-api",
+            "urls": [
+                "http://localhost:3000/**"
+            ],
+            "cacheConfig": {
+                "maxSize": 16,
+                "maxAge": "7d",
+                "timeout": "1s",
+                "strategy": "performance"
+            }
+        }
     ]
 }
