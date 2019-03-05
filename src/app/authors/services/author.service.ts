@@ -13,4 +13,8 @@ export class AuthorService {
   getAuthors() {
     return this.http.get<NewsAuthor[]>(environment.apiEndpoint + 'authors');
   }
+
+  getAuthorById(id: string) {
+    return this.http.get<NewsAuthor>(environment.apiEndpoint + 'authors/' + id);
+  }
 }

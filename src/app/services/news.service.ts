@@ -14,4 +14,8 @@ export class NewsService {
   loadNews() {
     return this.http.get<News[]>(environment.apiEndpoint + 'news');
   }
+
+  getNewsFromAuthor(authorId: string) {
+    return this.http.get<News[]>(environment.apiEndpoint + 'news', {params: {'author.id': authorId}});
+  }
 }

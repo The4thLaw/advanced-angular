@@ -11,7 +11,7 @@
     "app:setup": "npm i",
     "app:serve": "ng serve",
     "app:build": "ng build --prod",
-    "app:server": "node_modules/.bin/json-server --delay 1500 server/db.json",
+    "app:server": "node_modules/.bin/json-server --delay 300 server/db.json",
     "cypress": "node_modules/.bin/cypress open"
   },
   "private": true,
