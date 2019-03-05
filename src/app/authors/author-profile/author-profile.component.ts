@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthorService } from '../services/author.service';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
-import { NewsAuthor } from 'src/app/models/news-author';
-import { NewsService } from 'src/app/services/news.service';
-import { News } from 'src/app/models/news';
+import { NewsAuthor } from '../../models/news-author';
+import { NewsService } from '../../services/news.service';
+import { News } from '../../models/news';
 
 @Component({
     selector: 'app-author-profile',
@@ -17,8 +17,8 @@ export class AuthorProfileComponent implements OnInit {
     news: News[];
 
     constructor(private authorService: AuthorService,
-                private route: ActivatedRoute,
-                private newsService: NewsService) { }
+        private route: ActivatedRoute,
+        private newsService: NewsService) { }
 
     ngOnInit() {
         this.route.paramMap.pipe(
