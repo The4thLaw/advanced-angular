@@ -4,6 +4,8 @@ import { AccountAction, AccountActionType } from './reducers/accounts.actions';
 import { map, switchMap, catchError } from 'rxjs/operators';
 import { LoadNewsAction, NewsActionType, NewsLoadedAction } from './reducers/news.actions';
 import { NewsService } from './services/news.service';
+import { empty, of } from 'rxjs';
+import { emptyScheduled } from 'rxjs/internal/observable/empty';
 
 @Injectable()
 export class AppEffects {
@@ -17,9 +19,12 @@ export class AppEffects {
     switchMap(() => {
       return this.newsService.loadNews()
         .pipe(
-          map(loadedNews => new NewsLoadedAction(loadedNews))//,
-          //catchError(error => { console.log(error) })
-        )
+          map(loadedNews => new NewsLoadedAction(loadedNews)),
+          catchError(error => {
+            console.log(error);
+            return of(empty);
+          })
+        );
     })
   );
 
