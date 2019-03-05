@@ -5,26 +5,26 @@ import { HelloComponent } from './hello/hello.component';
 import { NewsComponent } from './news/news.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: HelloComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'news',
-    component: NewsComponent
-  },
-  {
-    path: 'authors',
-    loadChildren: './authors/authors.module#AuthorsModule'
-  }
+    {
+        path: '',
+        component: HelloComponent
+    },
+    {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
+        path: 'news',
+        component: NewsComponent
+    },
+    {
+        path: 'authors',
+        loadChildren: './authors/authors.module#AuthorsModule'
+    }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -8,7 +8,7 @@ export enum AccountActionType {
 export abstract class AccountAction implements Action {
     type: string;
 
-    constructor(public accountId: string, public amount: number) {}
+    constructor(public accountId: string, public amount: number) { }
 }
 
 export class DepositAction extends AccountAction {

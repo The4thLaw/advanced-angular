@@ -4,17 +4,17 @@ import { NewsAuthor } from 'src/app/models/news-author';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AuthorService {
 
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
-  getAuthors() {
-    return this.http.get<NewsAuthor[]>(environment.apiEndpoint + 'authors');
-  }
+    getAuthors() {
+        return this.http.get<NewsAuthor[]>(environment.apiEndpoint + 'authors');
+    }
 
-  getAuthorById(id: string) {
-    return this.http.get<NewsAuthor>(environment.apiEndpoint + 'authors/' + id);
-  }
+    getAuthorById(id: string) {
+        return this.http.get<NewsAuthor>(environment.apiEndpoint + 'authors/' + id);
+    }
 }

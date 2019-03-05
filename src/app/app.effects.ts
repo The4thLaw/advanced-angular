@@ -9,37 +9,37 @@ import { emptyScheduled } from 'rxjs/internal/observable/empty';
 
 @Injectable()
 export class AppEffects {
-  constructor(private actions$: Actions, private newsService: NewsService) {}
+    constructor(private actions$: Actions, private newsService: NewsService) { }
 
-  @Effect()
-  loadNewsEffect$ = this.actions$.pipe(
-    // Only process news load actions
-    ofType(NewsActionType.LOAD_NEWS),
-    // Each time an action is sent, cancel the last one and re-start loading the news
-    switchMap(() => {
-      return this.newsService.loadNews()
-        .pipe(
-          map(loadedNews => new NewsLoadedAction(loadedNews)),
-          catchError(error => {
-            console.log(error);
-            // This allows not returning any action
-            return of(empty);
-          })
-        );
-    })
-  );
+    @Effect()
+    loadNewsEffect$ = this.actions$.pipe(
+        // Only process news load actions
+        ofType(NewsActionType.LOAD_NEWS),
+        // Each time an action is sent, cancel the last one and re-start loading the news
+        switchMap(() => {
+            return this.newsService.loadNews()
+                .pipe(
+                    map(loadedNews => new NewsLoadedAction(loadedNews)),
+                    catchError(error => {
+                        console.log(error);
+                        // This allows not returning any action
+                        return of(empty);
+                    })
+                );
+        })
+    );
 
-  /*@Effect()
-  foo$ = this.actions$.pipe(
-    // Only process deposits
-    ofType(AccountActionType.deposit),
-    // For each of them
-    map((action: AccountAction) => {
-      // And then the reducers should be able to process those actions, rather than the original ones
-      if (action.amount > 1000) {
-        return { type: 'DepositError', reason: 'Too much'};
-      }
-      return { type: 'DepositConfirm', amount: action.amount, accountId: action.accountId};
-    })
-  );*/
+    /*@Effect()
+    foo$ = this.actions$.pipe(
+      // Only process deposits
+      ofType(AccountActionType.deposit),
+      // For each of them
+      map((action: AccountAction) => {
+        // And then the reducers should be able to process those actions, rather than the original ones
+        if (action.amount > 1000) {
+          return { type: 'DepositError', reason: 'Too much'};
+        }
+        return { type: 'DepositConfirm', amount: action.amount, accountId: action.accountId};
+      })
+    );*/
 }

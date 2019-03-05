@@ -1,8 +1,8 @@
 <div class="container">
-  <ul class="AuthorList">
-    <li *ngFor="let author of authors">
-      <div class="AuthorList__avatar" [ngStyle]="{'background-image': 'url(' + author.picture + ')'}"></div>
-      <div class="AuthorList__name">{{author.name}}</div>
-    </li>
-  </ul>
+    <ul class="AuthorList">
+        <li *ngFor="let author of authors">
+            <div class="AuthorList__avatar" [ngStyle]="{'background-image': 'url(' + author.picture + ')'}"></div>
+            <div class="AuthorList__name">{{author.name}}</div>
+        </li>
+    </ul>
 </div>

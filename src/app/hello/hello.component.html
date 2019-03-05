@@ -1,45 +1,46 @@
 <div class="container">
-  <div>
-    <h2 i18n>Accounts</h2>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th i18n>Account</th>
-          <th i18n>Balance</th>
-          <th i18n>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let account of accounts">
-          <td>{{account.id}}</td>
-          <td>{{account.balance}} €</td>
-          <td><button class="btn btn-primary btn-sm" (click)="select(account.id)" i18n>Select</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div>
-    <h2 i18n>Deposit / Withdraw</h2>
     <div>
-      <div class="form-group">
-        <label for="bankAccountIdInput" i18n>Account</label>
-        <input id="bankAccountIdInput" name="bankAccountId" class="form-control" [(ngModel)]="bankAccountId" />
-
-        <label for="amountToProcessInput" i18n>Amount</label>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">€</span>
-          </div>
-          <input id="amountToProcessInput" name="amountToProcess" class="form-control" type="number" [(ngModel)]="amountToProcess" />
-          <div class="input-group-append">
-            <span class="input-group-text">.00</span>
-          </div>
-        </div>
-      </div>
-      <div class="btn-toolbar">
-        <button id="btn-deposit" class="btn btn-primary mr-3" (click)="deposit()" i18n>Deposit</button>
-        <button id="btn-withdraw" class="btn btn-warning" (click)="withdraw()" i18n>Withdraw</button>
-      </div>
+        <h2 i18n>Accounts</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th i18n>Account</th>
+                    <th i18n>Balance</th>
+                    <th i18n>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let account of accounts">
+                    <td>{{account.id}}</td>
+                    <td>{{account.balance}} €</td>
+                    <td><button class="btn btn-primary btn-sm" (click)="select(account.id)" i18n>Select</button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-  </div>
+    <div>
+        <h2 i18n>Deposit / Withdraw</h2>
+        <div>
+            <div class="form-group">
+                <label for="bankAccountIdInput" i18n>Account</label>
+                <input id="bankAccountIdInput" name="bankAccountId" class="form-control" [(ngModel)]="bankAccountId" />
+
+                <label for="amountToProcessInput" i18n>Amount</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">€</span>
+                    </div>
+                    <input id="amountToProcessInput" name="amountToProcess" class="form-control" type="number"
+                        [(ngModel)]="amountToProcess" />
+                    <div class="input-group-append">
+                        <span class="input-group-text">.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-toolbar">
+                <button id="btn-deposit" class="btn btn-primary mr-3" (click)="deposit()" i18n>Deposit</button>
+                <button id="btn-withdraw" class="btn btn-warning" (click)="withdraw()" i18n>Withdraw</button>
+            </div>
+        </div>
+    </div>
 </div>

@@ -13,7 +13,7 @@ export class LoadNewsAction implements Action {
 export class NewsLoadedAction implements Action {
     readonly type = NewsActionType.NEWS_LOADED;
 
-    constructor(public news: News[]) {}
+    constructor(public news: News[]) { }
 }
 
 export type NewsAction = LoadNewsAction | NewsLoadedAction;
