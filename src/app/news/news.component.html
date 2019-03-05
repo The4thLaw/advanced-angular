@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row border-bottom mt-3 mb-3" *ngFor="let newsItem of news">
+  <div class="newsItem row border-bottom mt-3 mb-3" *ngFor="let newsItem of news">
     <h2>{{newsItem.title}}</h2>
     <p>{{newsItem.description}}</p>
     <footer class="blockquote-footer mb-3">Posted by <cite>{{newsItem.author.name}}</cite> in {{newsItem.category.name}}</footer>
