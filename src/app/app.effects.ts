@@ -22,6 +22,7 @@ export class AppEffects {
           map(loadedNews => new NewsLoadedAction(loadedNews)),
           catchError(error => {
             console.log(error);
+            // This allows not returning any action
             return of(empty);
           })
         );
