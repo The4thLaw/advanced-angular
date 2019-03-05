@@ -9,9 +9,10 @@ import { Account } from '../models/account';
 })
 export class HelloComponent {
 
-  // TODO: figure out why this doesn't work without initialization
-  bankAccountId: string = '';
-  amountToProcess: number = null;
+  // Template forms need the name attribute on the <input> element. Without it, it may not work.
+  // Else, use reactive forms
+  bankAccountId: string ;
+  amountToProcess: number;
 
   constructor(private bankAccountService: BankAccountService) { }
 
