@@ -20,7 +20,6 @@ export class BankAccountService {
     });
    }
 
-
   getAccount(id): Account {
     return this.accounts.getAccount(id);
   }
@@ -46,6 +45,9 @@ export class BankAccountService {
   withdraw(accountId: string, amount: number): Account {
     if (amount <= 0) {
       throw new Error('Can only withdraw positive amounts');
+    }
+    if (this.accounts.getAccount(accountId).balance <= amount) {
+      throw new Error('Inufficient funds for account ' + accountId);
     }
     this.store.dispatch(new WithdrawAction(accountId, amount));
     return this.getAccount(accountId);

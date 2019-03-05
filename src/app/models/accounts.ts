@@ -25,7 +25,7 @@ export class Accounts {
         this.accountMap[account.id] = account;
     }
 
-    getAccount(accountId: string) {
+    getAccount(accountId: string): Account {
         return this.accountMap[accountId];
     }
 }

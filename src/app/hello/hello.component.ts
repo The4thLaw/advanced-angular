@@ -25,18 +25,18 @@ export class HelloComponent {
   }
 
   deposit() {
-    //try {
+    try {
       this.bankAccountService.deposit(this.bankAccountId, this.amountToProcess);
-    //} catch (e) {
-    //  alert(e.message);
-    //}
+    } catch (e) {
+     alert(e.message);
+    }
   }
 
   withdraw() {
-    //try {
+    try {
       this.bankAccountService.withdraw(this.bankAccountId, this.amountToProcess);
-    //} catch (e) {
-    //  alert(e.message);
-    //}
+    } catch (e) {
+      alert(e.message);
+    }
   }
 }
