@@ -25,7 +25,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
         NewsComponent
     ],
     imports: [
-        BrowserModule,
+        BrowserModule.withServerTransition({ appId: 'serverApp' }),
         AppRoutingModule,
         FormsModule,
         ReactiveFormsModule,
