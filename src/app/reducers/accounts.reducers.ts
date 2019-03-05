@@ -4,6 +4,7 @@ import { Accounts } from '../models/accounts';
 
 // Always provide a default state to bootstrap the application
 const defaultAccountList = new Accounts();
+defaultAccountList.addAccount(new Account('BE1', 100));
 
 export function accountReducer(accounts: Accounts = defaultAccountList, action: AccountAction): Accounts {
     // TODO: manage negative amounts
