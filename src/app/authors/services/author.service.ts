@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { NewsAuthor } from 'src/app/models/news-author';
 import { environment } from 'src/environments/environment';
-import { News } from '../models/news';
-import { ObservableInput } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NewsService {
+export class AuthorService {
 
   constructor(private http: HttpClient) { }
 
-  loadNews() {
-    return this.http.get<News[]>(environment.apiEndpoint + 'news');
+  getAuthors() {
+    return this.http.get<NewsAuthor[]>(environment.apiEndpoint + 'authors');
   }
 }

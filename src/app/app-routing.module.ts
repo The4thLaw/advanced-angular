@@ -16,6 +16,10 @@ const routes: Routes = [
   {
     path: 'news',
     component: NewsComponent
+  },
+  {
+    path: 'authors',
+    loadChildren: './authors/authors.module#AuthorsModule'
   }
 ];
 

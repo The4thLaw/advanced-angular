@@ -8,6 +8,7 @@
 
     <nav class="my-2 my-md-0 mr-md-3">
         <a id="newsLink" class="p-2 text-dark" routerLink="/news">News</a>
+        <a id="newsLink" class="p-2 text-dark" routerLink="/authors">Authors</a>
     </nav>
     <a class="btn btn-outline-primary" routerLink="/login" *ngIf="!(isLoggedIn$ | async)">Login</a>
     <a class="btn btn-outline-primary" href="javascript: void(0);" (click)="logout()" *ngIf="isLoggedIn$ | async">Hi, Logout!</a>
