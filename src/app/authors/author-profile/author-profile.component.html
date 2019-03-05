@@ -1,0 +1,7 @@
+<div class="container" *ngIf="author">
+    <h2>{{author.name}}</h2>
+    <h3>News by this author</h3>
+    <ul>
+        <li *ngFor="let newsItem of news">{{newsItem.title}}</li>
+    </ul>
+</div>
