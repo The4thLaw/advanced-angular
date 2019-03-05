@@ -33,7 +33,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
         EffectsModule.forRoot([AppEffects]),
         HttpClientModule,
-        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.serviceWorkerEnabled })
     ],
     providers: [],
     bootstrap: [AppComponent]

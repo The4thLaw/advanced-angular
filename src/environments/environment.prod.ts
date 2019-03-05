@@ -1,4 +1,5 @@
 export const environment = {
-  production: true,
-  apiEndpoint: 'http://localhost:3000/'
+    production: true,
+    apiEndpoint: 'http://localhost:3000/',
+    serviceWorkerEnabled: false
 };
