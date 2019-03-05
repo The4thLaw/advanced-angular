@@ -29,7 +29,7 @@ export const reducers: ActionReducerMap<State> = {
 };
 
 // TODO: put this in its own file
-function loadingReducer(oldState: string, action: Action): string {
+export function loadingReducer(oldState: string, action: Action): string {
   switch (action.type) {
     case NewsActionType.LOAD_NEWS:
       return 'Loading news';
