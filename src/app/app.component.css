@@ -5,3 +5,14 @@ footer {
 .go-home:hover {
     cursor: pointer;
 }
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    background: rgba(255,255,255,0.8);
+    z-index: 10;
+}
