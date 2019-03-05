@@ -29,12 +29,12 @@ export class LoginComponent implements OnInit {
       filter(isLoggedIn => isLoggedIn === true)
     ).subscribe(
       _ => {
-        this.router.navigate(['/'])
+        this.router.navigate(['/']);
       },
       error => {
         console.error(error);
       }
-    )
+    );
   }
 
   login() {
@@ -42,11 +42,11 @@ export class LoginComponent implements OnInit {
 
     this.auth.login(value.email, value.password).subscribe(
       _ => {
-        console.log('Login ok')
+        console.log('Login ok');
       },
       error => {
         console.error(error);
       }
-    )
+    );
   }
 }
