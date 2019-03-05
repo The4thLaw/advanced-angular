@@ -1,8 +1,8 @@
 import { Action } from '@ngrx/store';
 
 export enum AccountActionType {
-    deposit = '[Hello] Deposit',
-    withdraw = '[Hello] Withdraw'
+    deposit = '[BankAccountService] Deposit',
+    withdraw = '[BankAccountService] Withdraw'
 }
 
 export abstract class AccountAction implements Action {
